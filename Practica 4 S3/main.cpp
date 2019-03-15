@@ -1,16 +1,17 @@
+/*
+Juan Francisco Torres Martínez - alu80
+Alejandro Gallego López - alu37
+Santiago Moltó Martínez - alu55
+*/
+
 #include <iostream>
 #include <stack>
 
 using namespace std;
 
-int main()
-{
+int programa3(int a, int b){
     stack <int> pila;
-    int a, b, resultado;
-    cout << "Introduce valores de a:";
-    cin >> a;
-    cout << "\nIntroduce valores de b:";
-    cin >> b;
+    int resultado = 0;
 
     while (a >= 3){
         pila.push(a);
@@ -22,7 +23,18 @@ int main()
         resultado = resultado + pila.top();
         pila.pop();
     }
+    return resultado;
+}
 
-    cout << "\nResultado: " << resultado << endl;
+int main()
+{
+
+    int a, b;
+    cout << "Introduce valores de a:";
+    cin >> a;
+    cout << "\nIntroduce valores de b:";
+    cin >> b;
+
+    cout << "\nResultado: " << programa3(a,b) << endl;
     return 0;
 }
