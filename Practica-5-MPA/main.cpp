@@ -27,7 +27,7 @@ void *quicksort(int *v, int izq, int der){
 
     if(p > 0){
         pivote = v[p];
-    (L[i] + L[j]) / 2    i = izq;
+        i = izq;
         d = der;
 
         while(i <= d){
