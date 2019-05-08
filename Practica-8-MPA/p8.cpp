@@ -90,6 +90,8 @@ int main()
     float *vVal;
     float voptimo = -1;
     float M = 10;
+    bool centinelaPesos = false;
+    bool centinelaValores = false;
 
     cout << "Introduce el total de objetos (n):";
     cin >> numTotalObj;
@@ -107,7 +109,9 @@ int main()
         cout << endl;
         X[i] = 0;
         Xoptimo[i] = 0;
-
+        if(vPes[i] < 0){
+            centinelaPesos = true;
+        }
     }
 
     cout << "VALORES:";
@@ -118,11 +122,17 @@ int main()
         cout << "Objeto " << i << ":";
         cin >> vVal[i];
         cout << endl;
+        if(vVal[i] < 0){
+            centinelaValores = true;
+        }
     }
 
-    Mochila(M,vPes,vVal,numTotalObj,X,0,Xoptimo,voptimo);
+    if(centinelaPesos == false && centinelaValores == false){
 
-    MostrarDatos(vPes,vVal,numTotalObj,Xoptimo,voptimo);
+        Mochila(M,vPes,vVal,numTotalObj,X,0,Xoptimo,voptimo);
+        MostrarDatos(vPes,vVal,numTotalObj,Xoptimo,voptimo);
+
+    }
 
     delete[]vPes;
     delete[]vVal;
