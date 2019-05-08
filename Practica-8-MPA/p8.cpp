@@ -109,7 +109,7 @@ int main()
         cout << endl;
         X[i] = 0;
         Xoptimo[i] = 0;
-        if(vPes[i] < 0){
+        if(vPes[i] < 0.1){
             centinelaPesos = true;
         }
     }
@@ -122,7 +122,7 @@ int main()
         cout << "Objeto " << i << ":";
         cin >> vVal[i];
         cout << endl;
-        if(vVal[i] < 0){
+        if(vVal[i] < 0.1){
             centinelaValores = true;
         }
     }
