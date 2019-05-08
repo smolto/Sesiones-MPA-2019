@@ -51,6 +51,36 @@ void Mochila(float M, float *vPes, float *vVal, int n, int *X, int k, int *Xopti
 
 }
 
+void MostrarDatos(float *vPes, float *vVal, int n, int *Xoptimo, float voptimo){
+    float peso = 0;
+    cout << endl;
+    cout << "OBJETOS A INTRODUCIR EN LA MALETA" << endl;
+
+    for(int i = 1; i <= n; i++){
+        if(Xoptimo[i] == 1){
+            cout << i << ": " << vPes[i] << "kg - Valor: " << vVal[i] << endl;
+            peso = peso + vPes[i];
+        }
+    }
+
+    cout << endl;
+
+    cout << "Peso: " << peso << endl;
+    cout << "Valor: " << voptimo << endl;
+
+    cout << endl;
+
+    cout << "OBJETOS QUE QUEDAN FUERA:";
+
+     for(int i = 1; i <= n; i++){
+        if(Xoptimo[i] == 0){
+            cout << " " << i;
+        }
+     }
+
+     cout << endl;
+}
+
 int main()
 {
     int numTotalObj = 0;
@@ -63,6 +93,7 @@ int main()
 
     cout << "Introduce el total de objetos (n):";
     cin >> numTotalObj;
+    cout << endl;
     cout << "PESOS:\n";
 
     vPes = new float[numTotalObj+1];
@@ -73,6 +104,7 @@ int main()
     for(int i = 1; i <= numTotalObj; i++){
         cout << "Objeto " << i << ":";
         cin >> vPes[i];
+        cout << endl;
         X[i] = 0;
         Xoptimo[i] = 0;
 
@@ -85,19 +117,17 @@ int main()
     for(int i = 1; i <= numTotalObj; i++){
         cout << "Objeto " << i << ":";
         cin >> vVal[i];
+        cout << endl;
     }
 
     Mochila(M,vPes,vVal,numTotalObj,X,0,Xoptimo,voptimo);
 
-    cout << "Optimo es: " << voptimo << endl;
-
-    for(int i = 1; i <= numTotalObj; i++){
-        cout << Xoptimo[i] << " ";
-    }
+    MostrarDatos(vPes,vVal,numTotalObj,Xoptimo,voptimo);
 
     delete[]vPes;
     delete[]vVal;
     delete[]X;
     delete[]Xoptimo;
+
     return 0;
 }
